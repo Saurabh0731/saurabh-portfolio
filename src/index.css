@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Smooth Scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Enable Scroll Snap */
+html, body {
+  height: 100%;
+  scroll-snap-type: y proximity;
+  overflow-y: scroll;
+}
+
+/* Each section snaps */
+section {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+/* Original Dark Theme */
+body {
+  @apply bg-[#0f172a] text-white;
+}
