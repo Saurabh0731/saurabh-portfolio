@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
+import profileImage from "../assets/saurabh.png";
 
 // ─── Section label ────────────────────────────────────────────────────────────
 function SectionTag({ index, label }) {
@@ -322,7 +323,8 @@ export default function About() {
                     }}
                   >
                     <img
-                      src="/src/assets/saurabh.png"
+                      src={profileImage}
+                      // src="/src/assets/saurabh.png"
                       alt="Saurabh Pandey"
                       className="w-full h-full object-cover"
                     />
