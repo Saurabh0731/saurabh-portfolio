@@ -338,7 +338,7 @@ export default function About() {
                 {/* Info rows */}
                 {[
                   { label: "Status", value: "Open to work", accent: true },
-                  { label: "Location", value: "Bhayander 🇮🇳" },
+                  { label: "Location", value: "Bhayander, Mumbai" },
                   { label: "Focus", value: "Frontend / React" },
                   { label: "Education", value: "BSc.IT ✓ | Pursuing MCA" },
                 ].map(({ label, value, accent }) => (
