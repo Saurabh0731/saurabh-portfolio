@@ -169,7 +169,7 @@ export default function Testimonials() {
     <section
       id="testimonials"
       ref={sectionRef}
-      className="relative py-32 overflow-hidden"
+      className="relative py-16 md:py-24 overflow-hidden"
       style={{ background: "#050508" }}
     >
       {/* Ambient blobs */}
@@ -202,7 +202,7 @@ export default function Testimonials() {
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10 lg:px-16">
 
         {/* ── Header ───────────────────────────────────────────────────────── */}
-        <div className="flex items-start justify-between mb-16">
+        <div className="flex items-start justify-between mb-10 md:mb-14">
           <div>
             <Reveal delay={0}>
               <SectionTag index="04" label="Testimonials" />
@@ -248,20 +248,20 @@ export default function Testimonials() {
         </div>
 
         {/* ── Proof stats ───────────────────────────────────────────────────── */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8 md:mb-12">
           {stats.map((s) => (
             <StatCard key={s.label} {...s} />
           ))}
         </div>
 
         {/* ── Marquee strips ───────────────────────────────────────────────── */}
-        <div className="flex flex-col gap-3 mb-16">
+        <div className="flex flex-col gap-3 mb-8 md:mb-12">
           <MarqueeStrip items={row1} reverse={false} speed={4} />
           <MarqueeStrip items={row2} reverse={true} speed={4} />
         </div>
 
         {/* ── Be first card + CTA ───────────────────────────────────────────── */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8 md:mb-12">
 
           {/* Be the first card */}
           <Reveal delay={0.1}>

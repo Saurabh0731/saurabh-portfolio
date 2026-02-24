@@ -106,8 +106,9 @@ function FeaturedCard({ project, index }) {
           }}
         />
 
-        {/* Browser mockup */}
-        <div className="absolute inset-6 rounded-xl overflow-hidden"
+        {/* Browser mockup — real screenshot or skeleton fallback */}
+        <div
+          className="absolute inset-6 rounded-xl overflow-hidden"
           style={{
             background: "rgba(5,5,8,0.9)",
             border: "1px solid rgba(255,255,255,0.08)",
@@ -115,7 +116,7 @@ function FeaturedCard({ project, index }) {
           }}
         >
           {/* Browser chrome */}
-          <div className="flex items-center gap-1.5 px-3 py-2.5 border-b border-white/5">
+          <div className="flex items-center gap-1.5 px-3 py-2.5 border-b border-white/5 flex-shrink-0">
             <div className="w-2 h-2 rounded-full bg-[#FF5F57]" />
             <div className="w-2 h-2 rounded-full bg-[#FFBD2E]" />
             <div className="w-2 h-2 rounded-full bg-[#28CA41]" />
@@ -127,29 +128,44 @@ function FeaturedCard({ project, index }) {
             </div>
           </div>
 
-          {/* Content area */}
-          <div className="p-4 flex flex-col gap-2">
-            {/* Fake nav */}
-            <div className="flex items-center justify-between mb-2">
-              <div className="h-3 w-16 rounded-full" style={{ background: `${project.accent}40` }} />
-              <div className="flex gap-2">
+          {/* Real screenshot */}
+          {project.image ? (
+            <div className="relative w-full h-full overflow-hidden">
+              <motion.img
+                src={project.image}
+                alt={`${project.title} screenshot`}
+                className="w-full h-full object-cover object-top"
+                animate={{ scale: hovered ? 1.04 : 1 }}
+                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              />
+              {/* Subtle gradient overlay at bottom */}
+              <div
+                className="absolute bottom-0 left-0 right-0 h-16 pointer-events-none"
+                style={{ background: "linear-gradient(to top, rgba(5,5,8,0.6), transparent)" }}
+              />
+            </div>
+          ) : (
+            /* Skeleton fallback */
+            <div className="p-4 flex flex-col gap-2">
+              <div className="flex items-center justify-between mb-2">
+                <div className="h-3 w-16 rounded-full" style={{ background: `${project.accent}40` }} />
+                <div className="flex gap-2">
+                  {[1, 2, 3].map((i) => (
+                    <div key={i} className="h-2.5 w-8 rounded-full" style={{ background: "rgba(255,255,255,0.07)" }} />
+                  ))}
+                </div>
+              </div>
+              <div className="h-16 rounded-lg mb-2"
+                style={{ background: `linear-gradient(135deg, ${project.accent}15, rgba(255,255,255,0.03))` }} />
+              <div className="grid grid-cols-3 gap-2">
                 {[1, 2, 3].map((i) => (
-                  <div key={i} className="h-2.5 w-8 rounded-full" style={{ background: "rgba(255,255,255,0.07)" }} />
+                  <div key={i} className="h-10 rounded-lg" style={{ background: "rgba(255,255,255,0.04)" }} />
                 ))}
               </div>
+              <div className="h-2 w-3/4 rounded-full mt-1" style={{ background: "rgba(255,255,255,0.06)" }} />
+              <div className="h-2 w-1/2 rounded-full" style={{ background: "rgba(255,255,255,0.04)" }} />
             </div>
-            {/* Fake hero */}
-            <div className="h-16 rounded-lg mb-2"
-              style={{ background: `linear-gradient(135deg, ${project.accent}15, rgba(255,255,255,0.03))` }} />
-            {/* Fake content rows */}
-            <div className="grid grid-cols-3 gap-2">
-              {[1, 2, 3].map((i) => (
-                <div key={i} className="h-10 rounded-lg" style={{ background: "rgba(255,255,255,0.04)" }} />
-              ))}
-            </div>
-            <div className="h-2 w-3/4 rounded-full mt-1" style={{ background: "rgba(255,255,255,0.06)" }} />
-            <div className="h-2 w-1/2 rounded-full" style={{ background: "rgba(255,255,255,0.04)" }} />
-          </div>
+          )}
         </div>
 
         {/* Project number watermark */}
@@ -306,6 +322,7 @@ export default function Projects() {
       group: true,
       accent: "#00FF87",
       url: "rebook.app/listings",
+      image: "/images/rebook-preview.png", // ← drop your screenshot here
       github: "https://github.com/Saurabh0731",
       live: null,
       description:
@@ -324,7 +341,7 @@ export default function Projects() {
     <section
       id="projects"
       ref={sectionRef}
-      className="relative py-32 overflow-hidden"
+      className="relative py-16 md:py-24 overflow-hidden"
       style={{ background: "#050508" }}
     >
       {/* Ambient blobs */}
@@ -357,7 +374,7 @@ export default function Projects() {
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10 lg:px-16">
 
         {/* ── Header ───────────────────────────────────────────────────────── */}
-        <div className="flex items-start justify-between mb-16">
+        <div className="flex items-start justify-between mb-10 md:mb-14">
           <div>
             <Reveal delay={0}>
               <SectionTag index="03" label="Projects" />
@@ -455,7 +472,7 @@ export default function Projects() {
 
         {/* Divider */}
         <Reveal delay={0.1}>
-          <div className="mt-20 flex items-center gap-4">
+          <div className="mt-12 flex items-center gap-4">
             <div className="flex-1 h-px" style={{ background: "rgba(255,255,255,0.06)" }} />
             <span className="text-[10px] font-mono tracking-[0.4em] uppercase text-white/15">End of section</span>
             <div className="flex-1 h-px" style={{ background: "rgba(255,255,255,0.06)" }} />

@@ -1,26 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Mono:wght@300;400;500&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Smooth Scroll */
+/* ─── Design tokens ─────────────────────────────────────────────────────────── */
+:root {
+  --accent-green: #00FF87;
+  --accent-pink:  #FF2D78;
+  --accent-cyan:  #00e5ff;
+  --bg-void:      #050508;
+  --bg-surface:   #0a0a0f;
+  --text-primary: #f0f0f0;
+  --text-muted:   rgba(240, 240, 240, 0.45);
+  --font-display: 'Syne', sans-serif;
+  --font-mono:    'DM Mono', monospace;
+}
+
+/* ─── Base ───────────────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
-/* Enable Scroll Snap */
-html, body {
-  height: 100%;
-  scroll-snap-type: y proximity;
-  overflow-y: scroll;
-}
-
-/* Each section snaps */
-section {
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
-}
-
-/* Original Dark Theme */
 body {
-  @apply bg-[#0f172a] text-white;
+  background: var(--bg-void);
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ─── Typography helpers ────────────────────────────────────────────────────── */
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* ─── Scrollbar ─────────────────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-void);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent-green);
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-cyan);
+}
+
+/* ─── Selection ─────────────────────────────────────────────────────────────── */
+::selection {
+  background: rgba(0, 255, 135, 0.2);
+  color: #ffffff;
+}
+
+/* ─── Focus ring ────────────────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 1.5px solid var(--accent-green);
+  outline-offset: 3px;
+}
+
+/* ─── Smooth anchor scroll offset (for fixed navbar) ───────────────────────── */
+section[id] {
+  scroll-margin-top: 64px;
+}
+
+/* ─── Prevent horizontal overflow everywhere ────────────────────────────────── */
+body {
+  overflow-x: hidden;
+}
+
+section {
+  overflow-x: hidden;
+}
+
+/* ─── Mobile performance ────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  /* Kill backdrop-filter on mobile - causes lag and dark card issue */
+  * {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+}
+
+/* ─── Scrolling performance ─────────────────────────────────────────────────── */
+section {
+  will-change: auto;
+  contain: layout style;
 }

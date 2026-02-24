@@ -319,14 +319,14 @@ export default function Navbar() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
       >
-        {/* Glass background */}
-        <motion.div
-          className="absolute inset-0"
-          animate={{
-            backgroundColor: scrolled ? "rgba(5,5,8,0.85)" : "rgba(5,5,8,0)",
-            backdropFilter: scrolled ? "blur(20px)" : "blur(0px)",
+        {/* Glass background — CSS transition instead of framer-motion for perf */}
+        <div
+          className="absolute inset-0 transition-all duration-300"
+          style={{
+            backgroundColor: scrolled ? "rgba(5,5,8,0.88)" : "rgba(5,5,8,0)",
+            backdropFilter: scrolled ? "blur(18px)" : "none",
+            WebkitBackdropFilter: scrolled ? "blur(18px)" : "none",
           }}
-          transition={{ duration: 0.4 }}
         />
 
         {/* Bottom border — only visible when scrolled */}
@@ -396,64 +396,6 @@ export default function Navbar() {
 
       {/* Spacer */}
       <div className="h-16 md:h-18" />
-
-      {/* Global styles injected here for font import */}
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Mono:wght@300;400;500&display=swap');
-        
-        :root {
-          --accent-green: #00FF87;
-          --accent-pink: #FF2D78;
-          --accent-cyan: #00e5ff;
-          --bg-void: #050508;
-          --bg-surface: #0a0a0f;
-          --text-primary: #f0f0f0;
-          --text-muted: rgba(240,240,240,0.45);
-          --font-display: 'Syne', sans-serif;
-          --font-mono: 'DM Mono', monospace;
-        }
-
-        html {
-          scroll-behavior: smooth;
-        }
-
-        body {
-          background: var(--bg-void);
-          color: var(--text-primary);
-          font-family: var(--font-mono);
-          -webkit-font-smoothing: antialiased;
-        }
-
-        * {
-          box-sizing: border-box;
-        }
-
-        ::-webkit-scrollbar {
-          width: 3px;
-        }
-
-        ::-webkit-scrollbar-track {
-          background: var(--bg-void);
-        }
-
-        ::-webkit-scrollbar-thumb {
-          background: var(--accent-green);
-          border-radius: 2px;
-        }
-
-        ::selection {
-          background: rgba(0, 255, 135, 0.25);
-          color: white;
-        }
-
-        .font-display {
-          font-family: var(--font-display);
-        }
-
-        .font-mono {
-          font-family: var(--font-mono);
-        }
-      `}</style>
     </>
   );
 }

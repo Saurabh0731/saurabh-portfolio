@@ -1,3 +1,6 @@
+const EMAILJS_SERVICE_ID  = "service_xxxxxxx";
+const EMAILJS_TEMPLATE_ID = "template_xxxxxxx";
+const EMAILJS_PUBLIC_KEY  = "xxxxxxxxxxxxxxxxxxxx";
 import { useRef, useState } from "react";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 
@@ -217,7 +220,7 @@ export default function Contact() {
     <section
       id="contact"
       ref={sectionRef}
-      className="relative py-32 overflow-hidden"
+      className="relative py-16 md:py-24 overflow-hidden"
       style={{ background: "#050508" }}
     >
       {/* Ambient blobs */}
@@ -250,7 +253,7 @@ export default function Contact() {
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10 lg:px-16">
 
         {/* ── Header ───────────────────────────────────────────────────────── */}
-        <div className="flex items-start justify-between mb-16">
+        <div className="flex items-start justify-between mb-10 md:mb-14">
           <div>
             <Reveal delay={0}>
               <SectionTag index="05" label="Contact" />
@@ -495,7 +498,7 @@ export default function Contact() {
 
         {/* ── Bottom divider ────────────────────────────────────────────────── */}
         <Reveal delay={0.1}>
-          <div className="mt-24 flex items-center gap-4">
+          <div className="mt-14 flex items-center gap-4">
             <div className="flex-1 h-px" style={{ background: "rgba(255,255,255,0.06)" }} />
             <span className="text-[10px] font-mono tracking-[0.4em] uppercase text-white/15">End of section</span>
             <div className="flex-1 h-px" style={{ background: "rgba(255,255,255,0.06)" }} />

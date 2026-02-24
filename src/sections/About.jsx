@@ -54,7 +54,7 @@ function TraitCard({ icon, title, desc, delay }) {
       transition={{ delay, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
       className="relative group p-6 rounded-2xl overflow-hidden cursor-default"
       style={{
-        background: "rgba(10,10,15,0.6)",
+        background: "rgba(14,14,20,0.95)",
         border: "1px solid rgba(255,255,255,0.06)",
         backdropFilter: "blur(12px)",
       }}
@@ -152,7 +152,7 @@ export default function About() {
     <section
       id="about"
       ref={sectionRef}
-      className="relative py-32 overflow-hidden"
+      className="relative py-16 md:py-24"
       style={{ background: "#050508" }}
     >
       {/* Ambient blob — parallax */}
@@ -182,10 +182,10 @@ export default function About() {
         }}
       />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10 lg:px-16">
+      <div className="relative z-10 max-w-7xl mx-auto px-5 md:px-10 lg:px-16">
 
         {/* ── Top layout: tag + big number ─────────────────────────────────── */}
-        <div className="flex items-start justify-between mb-20">
+        <div className="flex items-start justify-between mb-10 md:mb-14">
           <Reveal delay={0}>
             <SectionTag index="01" label="About Me" />
           </Reveal>
@@ -204,15 +204,15 @@ export default function About() {
         </div>
 
         {/* ── Two-column layout ────────────────────────────────────────────── */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-start">
 
           {/* LEFT — text content */}
           <div>
             {/* Big heading */}
             <Reveal delay={0.1}>
               <h2
-                className="font-display font-extrabold leading-[1.05] mb-8"
-                style={{ fontSize: "clamp(2.2rem, 5vw, 4rem)" }}
+                className="font-display font-extrabold leading-[1.05] mb-6"
+                style={{ fontSize: "clamp(1.7rem, 4.5vw, 4rem)" }}
               >
                 <span className="text-white">I turn ideas into</span>
                 <br />
@@ -248,11 +248,11 @@ export default function About() {
 
             {/* Inline highlights */}
             <Reveal delay={0.35}>
-              <div className="flex flex-wrap gap-3 mb-10">
+              <div className="flex flex-wrap gap-2 mb-8">
                 {["HTML5", "CSS3", "JavaScript", "Bootstrap", "React", "Git", "Figma", "WordPress"].map((tech) => (
                   <span
                     key={tech}
-                    className="text-[11px] font-mono tracking-widest uppercase px-3 py-1.5 rounded-full transition-all duration-300 cursor-default"
+                    className="text-[10px] font-mono tracking-wider uppercase px-2.5 py-1 rounded-full cursor-default"
                     style={{
                       background: "rgba(0,255,135,0.06)",
                       border: "1px solid rgba(0,255,135,0.2)",
@@ -297,7 +297,7 @@ export default function About() {
               <div
                 className="relative rounded-2xl p-8 overflow-hidden"
                 style={{
-                  background: "rgba(10,10,15,0.7)",
+                  background: "rgba(14,14,20,0.97)",
                   border: "1px solid rgba(255,255,255,0.07)",
                   backdropFilter: "blur(16px)",
                 }}
@@ -315,14 +315,17 @@ export default function About() {
                 {/* Avatar placeholder */}
                 <div className="flex items-center gap-5 mb-6">
                   <div
-                    className="w-14 h-14 rounded-full flex items-center justify-center text-xl font-display font-bold flex-shrink-0"
+                    className="w-14 h-14 rounded-full overflow-hidden flex-shrink-0"
                     style={{
-                      background: "linear-gradient(135deg, rgba(0,255,135,0.2), rgba(0,229,255,0.1))",
                       border: "1px solid rgba(0,255,135,0.3)",
-                      color: "#00FF87",
+                      boxShadow: "0 0 16px rgba(0,255,135,0.15)",
                     }}
                   >
-                    S
+                    <img
+                      src="/src/assets/saurabh.png"
+                      alt="Saurabh Pandey"
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                   <div>
                     <p className="font-display font-bold text-white text-lg leading-tight">
@@ -384,7 +387,7 @@ export default function About() {
 
         {/* ── Bottom divider ────────────────────────────────────────────────── */}
         <Reveal delay={0.1}>
-          <div className="mt-24 flex items-center gap-4">
+          <div className="mt-14 flex items-center gap-4">
             <div className="flex-1 h-px" style={{ background: "rgba(255,255,255,0.06)" }} />
             <span className="text-[10px] font-mono tracking-[0.4em] uppercase text-white/15">
               End of section

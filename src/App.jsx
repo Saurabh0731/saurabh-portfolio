@@ -1,27 +1,27 @@
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 import Hero from "./sections/Hero";
 import About from "./sections/About";
+import Timeline from "./sections/Timeline";
 import Skills from "./sections/Skills";
 import Projects from "./sections/Projects";
-import Contact from "./sections/Contact";
-import Timeline from "./sections/Timeline";
 import Testimonials from "./sections/Testimonials";
-import Footer from "./components/Footer";
+import Contact from "./sections/Contact";
 
-function App() {
+export default function App() {
   return (
     <>
       <Navbar />
-      <Hero />
-      <About />
-      <Skills />
-      <Timeline />
-      <Testimonials />
-      <Projects />
-      <Contact />
+      <main>
+        <Hero />
+        <About />
+        <Timeline />
+        <Skills />
+        <Projects />
+        <Testimonials />
+        <Contact />
+      </main>
       <Footer />
     </>
   );
 }
-
-export default App;
